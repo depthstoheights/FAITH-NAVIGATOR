@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faith Navigator - A Guide for Growing Christians</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&family=Space+Mono:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: #2d3436;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 11pt;
+        }
+        
+        .page {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 50px rgba(0,0,0,0.2);
+        }
+        
+        /* Cover Page */
+        .cover-page {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            padding: 40px;
+            page-break-after: always;
+        }
+        
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.05) 10px,
+                rgba(255,255,255,0.05) 20px
+            );
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .cover-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            z-index: 1;
+            position: relative;
+            letter-spacing: -2px;
+        }
+        
+        .cover-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8em;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            z-index: 1;
+            position: relative;
+            letter-spacing: 2px;
+        }
+        
+        .cover-tagline {
+            font-size: 1.2em;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            z-index: 1;
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        /* Content Styles */
+        .content-page {
+            padding: 0.75in;
+            min-height: 10in;
+            page-break-inside: avoid;
+        }
+        
+        .new-section {
+            page-break-before: always;
+            padding: 0.75in;
+        }
+        
+        /* Typography */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #667eea;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid;
+            border-image: linear-gradient(90deg, #667eea, #f093fb) 1;
+            page-break-after: avoid;
+        }
+        
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #764ba2;
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            page-break-after: avoid;
+        }
+        
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #667eea;
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-weight: 500;
+            page-break-after: avoid;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        /* Real Talk Box */
+        .real-talk {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(250, 112, 154, 0.3);
+        }
+        
+        .real-talk::before {
+            content: '💬 REAL TALK';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: white;
+            color: #fa709a;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+        
+        .real-talk-content {
+            margin-top: 10px;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+        
+        /* Scripture Study Box */
+        .scripture-study {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border-left: 5px solid #0ea5e9;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .scripture-study::before {
+            content: '📖';
+            position: absolute;
+            top: 20px;
+            left: -15px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .scripture-text {
+            font-style: italic;
+            color: #0c4a6e;
+            font-size: 1.1em;
+            margin: 15px 0;
+            padding-left: 20px;
+            border-left: 3px solid #0ea5e9;
+        }
+        
+        .scripture-ref {
+            text-align: right;
+            color: #0284c7;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        /* Q&A Section */
+        .qa-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .question {
+            color: #9a3412;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .question::before {
+            content: 'Q: ';
+            color: #ea580c;
+            font-weight: 700;
+        }
+        
+        .answer {
+            color: #7c2d12;
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .answer::before {
+            content: 'A: ';
+            color: #c2410c;
+            font-weight: 600;
+        }
+        
+        /* Action Steps */
+        .action-steps {
+            background: linear-gradient(135deg, #d9f99d 0%, #bef264 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .action-steps::before {
+            content: '🎯 ACTION STEPS';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: white;
+            color: #65a30d;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+        
+        .action-item {
+            background: white;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #84cc16;
+            color: #365314;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .action-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #84cc16;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: 700;
+        }
+        
+        /* Reflection Box */
+        .reflection-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px dashed #f59e0b;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+        
+        .reflection-box::before {
+            content: '✍️ REFLECTION';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: white;
+            color: #d97706;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+        
+        .reflection-prompt {
+            color: #92400e;
+            font-style: italic;
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .reflection-lines {
+            border-bottom: 1px solid #f59e0b;
+            height: 30px;
+            margin: 10px 0;
+        }
+        
+        /* From the Trenches */
+        .trenches-story {
+            background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            position: relative;
+            color: #581c87;
+        }
+        
+        .trenches-story::before {
+            content: '🎖️ FROM THE TRENCHES';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: white;
+            color: #7e22ce;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+        
+        .story-content {
+            margin-top: 15px;
+            font-style: italic;
+            line-height: 1.9;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 20px;
+            padding: 35px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .toc-title {
+            font-family: 'Playfair Display', serif;
+            color: #667eea;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .toc-chapter {
+            padding: 12px 20px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .toc-chapter:hover {
+            border-left-color: #667eea;
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .chapter-number {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            line-height: 35px;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-weight: 700;
+        }
+        
+        /* Modern Elements */
+        .social-media-box {
+            background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 10px 30px rgba(131, 58, 180, 0.3);
+        }
+        
+        .myth-buster {
+            background: #2d3436;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .myth-buster::before {
+            content: '🚫 MYTH: ';
+            color: #ff6b6b;
+            font-weight: 700;
+        }
+        
+        .truth {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #636e72;
+        }
+        
+        .truth::before {
+            content: '✅ TRUTH: ';
+            color: #00b894;
+            font-weight: 700;
+        }
+        
+        /* Prayer Guide */
+        .prayer-guide {
+            background: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .prayer-guide::before {
+            content: '🙏';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 2em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .prayer-text {
+            font-style: italic;
+            color: #4a5568;
+            line-height: 1.9;
+            margin-top: 20px;
+        }
+        
+        /* Discussion Questions */
+        .discussion-box {
+            background: linear-gradient(135deg, #ddd6fe 0%, #a78bfa 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .discussion-title {
+            color: #4c1d95;
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .discussion-question {
+            background: white;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            color: #4c1d95;
+            border-left: 3px solid #7c3aed;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            background: white;
+        }
+        
+        tr:hover {
+            background: #f9fafb;
+        }
+        
+        /* Chapter Headers */
+        .chapter-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            margin: -0.75in -0.75in 30px -0.75in;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chapter-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+        }
+        
+        .chapter-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 1em;
+            letter-spacing: 3px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .chapter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .chapter-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2em;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+        
+        /* Divider */
+        .divider {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.5em;
+            color: #cbd5e1;
+            page-break-after: avoid;
+        }
+        
+        /* Print Optimization */
+        @media print {
+            .cover-page {
+                height: 100vh;
+            }
+            
+            .new-section {
+                page-break-before: always;
+            }
+            
+            .chapter-header {
+                page-break-before: always;
+            }
+            
+            body {
+                font-size: 11pt;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- COVER PAGE -->
+        <div class="cover-page">
+            <h1 class="cover-title">FAITH NAVIGATOR</h1>
+            <p class="cover-subtitle">A GUIDE FOR GROWING CHRISTIANS</p>
+            <div class="cover-tagline">
+                For every young believer wrestling with real questions, facing real doubts, and seeking real faith in a complex world
+            </div>
+            <div style="margin-top: 50px; font-size: 1.1em; opacity: 0.9;">
+                Ages 16-30 | Real Questions | Biblical Answers | Practical Faith
+            </div>
+            <div style="margin-top: 30px; font-size: 1.3em; font-weight: 600; letter-spacing: 2px;">
+                CLEON ALLEYNE
+            </div>
+        </div>
+        
+        <!-- TABLE OF CONTENTS -->
+        <div class="new-section">
+            <div class="toc">
+                <h2 class="toc-title">Contents</h2>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">1</span> Salvation Foundations: What You Really Need to Know</span>
+                    <span>7</span>
+                </div>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">2</span> Faith & Doubt: When Questions Won't Go Away</span>
+                    <span>25</span>
+                </div>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">3</span> Heaven, Hell & Eternity: The Truth Beyond the Myths</span>
+                    <span>43</span>
+                </div>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">4</span> Modern Culture: Being Christian in Today's World</span>
+                    <span>61</span>
+                </div>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">5</span> Practical Christianity: Making Faith Work Daily</span>
+                    <span>79</span>
+                </div>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">6</span> Tough Questions: The Stuff We're Afraid to Ask</span>
+                    <span>97</span>
+                </div>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">7</span> Relationships: Love, Dating & Biblical Boundaries</span>
+                    <span>115</span>
+                </div>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">8</span> Finding Purpose: God's Will & Your Calling</span>
+                    <span>133</span>
+                </div>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">9</span> Spiritual Warfare: The Battle You're Already In</span>
+                    <span>151</span>
+                </div>
+                
+                <div class="toc-chapter">
+                    <span><span class="chapter-number">10</span> Growing Forward: Next Steps in Your Faith Journey</span>
+                    <span>169</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FOREWORD -->
+        <div class="new-section">
+            <h1>Foreword: Let's Be Real</h1>
+            
+            <p style="text-align: right; font-style: italic; margin-bottom: 30px;">By Cleon Alleyne</p>
+            
+            <p>Hey there. If you're reading this, you're probably in one of these situations:</p>
+            
+            <ul>
+                <li>You're lying awake at 2 AM wondering if God is real and if your faith actually matters</li>
+                <li>You're sitting in church feeling like everyone else "gets it" while you're drowning in questions</li>
+                <li>You're tired of getting Sunday School answers to your Monday morning problems</li>
+                <li>You want to follow Jesus but have no idea what that looks like with your non-Christian friends, social media, career pressures, and relationship struggles</li>
+                <li>You've been hurt by church but still believe there's something real about Jesus</li>
+            </ul>
+            
+            <p>If any of that resonates, welcome. You're in the right place.</p>
+            
+            <div class="real-talk">
+                <div class="real-talk-content">
+                    This isn't your typical Christian book that pretends everything is fine if you just pray harder. We're going to tackle the questions you're afraid to ask in small group. We're going to be honest about doubts, struggles, and the messy reality of following Jesus in a world that thinks you're crazy for believing in Him.
+                </div>
+            </div>
+            
+            <h2>What This Book Is (and Isn't)</h2>
+            
+            <p><strong>This book IS:</strong></p>
+            <ul>
+                <li>A practical guide for real faith in the real world</li>
+                <li>Biblically grounded (every major point backed by Scripture)</li>
+                <li>Honest about the struggles of being a young Christian today</li>
+                <li>Full of practical tools you can actually use</li>
+                <li>Written by someone who's been where you are</li>
+            </ul>
+            
+            <p><strong>This book is NOT:</strong></p>
+            <ul>
+                <li>A collection of Christian clichés and pat answers</li>
+                <li>Judgment for your doubts or struggles</li>
+                <li>A promise that faith makes life easy</li>
+                <li>Another voice telling you you're not good enough</li>
+                <li>A replacement for genuine community and discipleship</li>
+            </ul>
+            
+            <h2>How to Use This Guide</h2>
+            
+            <p>You don't have to read this cover to cover (though you can). Each chapter stands alone, so jump to whatever you need right now. Here's what you'll find in each section:</p>
+            
+            <div class="action-steps">
+                <div class="action-item"><span class="action-number">1</span> <strong>Core Teaching:</strong> Biblical truth explained clearly</div>
+                <div class="action-item"><span class="action-number">2</span> <strong>Real Talk Boxes:</strong> Addressing the stuff no one talks about</div>
+                <div class="action-item"><span class="action-number">3</span> <strong>Scripture Studies:</strong> Digging deeper into God's Word</div>
+                <div class="action-item"><span class="action-number">4</span> <strong>Q&A Sections:</strong> Common questions with honest answers</div>
+                <div class="action-item"><span class="action-number">5</span> <strong>Action Steps:</strong> Practical things you can do right now</div>
+                <div class="action-item"><span class="action-number">6</span> <strong>Reflection Spaces:</strong> Room to process and journal</div>
+            </div>
+            
+            <h2>About Your Guide</h2>
+            
+            <p>I'm Cleon Alleyne, and I've walked this journey of faith through the questions, the doubts, and the struggles. As a pastor, missionary, and someone who's wrestled with these same issues, I'm not writing from a place of having it all figured out—I'm writing as a fellow traveler who's discovered that honest faith is stronger than perfect faith.</p>
+            
+            <div class="prayer-guide">
+                <div class="prayer-text">
+                    God, I'm coming to You with all my questions, doubts, and confusion. I want to know You—the real You, not just the version I've been taught. Give me wisdom as I read, courage to face hard truths, and grace for this journey. Help me build a faith that's genuine, that can withstand storms, and that actually makes a difference in my life. In Jesus' name, Amen.
+                </div>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 1 -->
+        <div class="new-section">
+            <div class="chapter-header">
+                <div class="chapter-label">CHAPTER ONE</div>
+                <div class="chapter-title">Salvation Foundations</div>
+                <div class="chapter-subtitle">What You Really Need to Know</div>
+            </div>
+            
+            <p>Let's start with the absolute basics—and I mean the real basics, not the churchy words that everyone pretends to understand. If you've been in church your whole life, you might think you know this stuff. But stick with me, because we're going to dig deeper than "Jesus loves me, this I know."</p>
+            
+            <h2>What Is Salvation Really?</h2>
+            
+            <p>Salvation isn't just a "get out of hell free" card. It's not fire insurance. It's not just saying a prayer so you can keep living however you want. So what is it?</p>
+            
+            <div class="scripture-study">
+                <div class="scripture-text">
+                    "For it is by grace you have been saved, through faith—and this is not from yourselves, it is the gift of God—not by works, so that no one can boast."
+                </div>
+                <div class="scripture-ref">- Ephesians 2:8-9</div>
+            </div>
+            
+            <p>Salvation is:</p>
+            
+            <ul>
+                <li><strong>Rescue:</strong> God pulling you out of a situation you couldn't escape on your own</li>
+                <li><strong>Restoration:</strong> Being brought back to what you were meant to be</li>
+                <li><strong>Relationship:</strong> Not just knowing about God, but knowing Him personally</li>
+                <li><strong>Transformation:</strong> Becoming a new person from the inside out</li>
+            </ul>
+            
+            <div class="myth-buster">
+                "If you're really saved, you'll never struggle with sin again."
+                <div class="truth">
+                    Salvation doesn't make you perfect overnight. You're declared righteous (justification) instantly, but becoming like Jesus (sanctification) is a lifelong process. You'll still mess up, but now you have the Holy Spirit helping you grow.
+                </div>
+            </div>
+            
+            <h2>How Does Someone Actually Get Saved?</h2>
+            
+            <p>Churches make this so complicated sometimes. Let's break it down to what the Bible actually says:</p>
+            
+            <div class="action-steps">
+                <div class="action-item"><span class="action-number">1</span> <strong>Recognize:</strong> You need God. You can't save yourself (Romans 3:23)</div>
+                <div class="action-item"><span class="action-number">2</span> <strong>Believe:</strong> Jesus died for your sins and rose again (Romans 10:9)</div>
+                <div class="action-item"><span class="action-number">3</span> <strong>Receive:</strong> Accept God's gift of salvation by faith (John 1:12)</div>
+                <div class="action-item"><span class="action-number">4</span> <strong>Confess:</strong> Acknowledge Jesus as Lord of your life (Romans 10:10)</div>
+                <div class="action-item"><span class="action-number">5</span> <strong>Follow:</strong> Begin walking in relationship with Him (Luke 9:23)</div>
+            </div>
+            
+            <div class="qa-section">
+                <div class="question">But what about the "sinner's prayer"? Is there a magic formula?</div>
+                <div class="answer">No magic formula exists. The "sinner's prayer" is just a tool to help express what's happening in your heart. God looks at your heart, not your exact words. You could say "Jesus, help!" and if you mean it, that's enough.</div>
+                
+                <div class="question" style="margin-top: 20px;">Do I need to be baptized to be saved?</div>
+                <div class="answer">Baptism doesn't save you—it's an outward expression of an inward change. Think of it like a wedding ring: the ring doesn't make you married, but it shows the world you are. The thief on the cross was saved without baptism (Luke 23:43).</div>
+            </div>
+            
+            <h2>Once Saved, Always Saved?</h2>
+            
+            <p>This question has divided Christians for centuries. Let's look at what we know for sure:</p>
+            
+            <div class="scripture-study">
+                <div class="scripture-text">
+                    "My sheep listen to my voice; I know them, and they follow me. I give them eternal life, and they shall never perish; no one will snatch them out of my hand."
+                </div>
+                <div class="scripture-ref">- John 10:27-28</div>
+            </div>
+            
+            <p><strong>What's Clear:</strong></p>
+            <ul>
+                <li>God's grip on you is stronger than your grip on Him</li>
+                <li>No external force can separate you from God's love (Romans 8:38-39)</li>
+                <li>God finishes what He starts (Philippians 1:6)</li>
+            </ul>
+            
+            <p><strong>The Tension:</strong></p>
+            <ul>
+                <li>The Bible warns against falling away (Hebrews 6:4-6)</li>
+                <li>We're told to persevere and endure (Matthew 24:13)</li>
+                <li>Faith without works is dead (James 2:17)</li>
+            </ul>
+            
+            <div class="real-talk">
+                <div class="real-talk-content">
+                    Instead of obsessing over whether you can lose your salvation, focus on actually following Jesus. If you're genuinely concerned about your salvation, that's actually a good sign—people who don't care about God don't worry about their relationship with Him. Keep pursuing Him, and trust His promise to never let you go.
+                </div>
+            </div>
+            
+            <h2>Faith vs. Works: The Age-Old Confusion</h2>
+            
+            <p>James says faith without works is dead. Paul says we're saved by faith, not works. Are they contradicting each other? Nope.</p>
+            
+            <table>
+                <tr>
+                    <th>Paul's Point (Ephesians 2:8-9)</th>
+                    <th>James's Point (James 2:17)</th>
+                </tr>
+                <tr>
+                    <td>You can't earn salvation through good deeds</td>
+                    <td>Real faith naturally produces good deeds</td>
+                </tr>
+                <tr>
+                    <td>Works don't save you</td>
+                    <td>Saved people do good works</td>
+                </tr>
+                <tr>
+                    <td>Faith is the root</td>
+                    <td>Works are the fruit</td>
+                </tr>
+            </table>
+            
+            <p>Think of it this way: You don't do good things to become God's child. You do good things because you are God's child.</p>
+            
+            <div class="trenches-story">
+                <div class="story-content">
+                    "I spent years thinking I had to earn God's love by being perfect. I'd mess up and think I'd lost my salvation, then try harder to be good enough. It wasn't until I understood grace—that God loved me at my worst—that I actually started changing for the better. When I stopped trying to earn what was already freely given, I finally started growing." - Sarah, 22 (shared with Pastor Cleon)
+                </div>
+            </div>
+            
+            <h2>What About Baptism?</h2>
+            
+            <p>Baptism is important, but let's clear up the confusion:</p>
+            
+            <div class="scripture-study">
+                <div class="scripture-text">
+                    "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit"
+                </div>
+                <div class="scripture-ref">- Matthew 28:19</div>
+            </div>
+            
+            <p><strong>What Baptism IS:</strong></p>
+            <ul>
+                <li>A public declaration of your faith</li>
+                <li>An act of obedience to Jesus' command</li>
+                <li>A symbol of death to old life and resurrection to new life</li>
+                <li>A joining with the community of believers</li>
+            </ul>
+            
+            <p><strong>What Baptism is NOT:</strong></p>
+            <ul>
+                <li>A requirement for salvation</li>
+                <li>A magical ritual that changes you</li>
+                <li>Something to do when you're "good enough"</li>
+                <li>A guarantee you'll never struggle again</li>
+            </ul>
+            
+            <div class="reflection-box">
+                <div class="reflection-prompt">Take a moment to think about your own salvation story:</div>
+                <div class="reflection-lines"></div>
+                <div class="reflection-prompt">When did you first understand what Jesus did for you?</div>
+                <div class="reflection-lines"></div>
+                <div class="reflection-prompt">What doubts or questions do you still have about salvation?</div>
+                <div class="reflection-lines"></div>
+                <div class="reflection-prompt">How has your understanding of salvation changed over time?</div>
+                <div class="reflection-lines"></div>
+            </div>
+            
+            <div class="action-steps">
+                <p style="margin-bottom: 20px;"><strong>This Week's Challenge:</strong></p>
+                <div class="action-item"><span class="action-number">1</span> Read Romans 8 every day this week</div>
+                <div class="action-item"><span class="action-number">2</span> Write out your testimony in one page</div>
+                <div class="action-item"><span class="action-number">3</span> Share your salvation questions with a trusted Christian friend</div>
+                <div class="action-item"><span class="action-number">4</span> Memorize Ephesians 2:8-9</div>
+                <div class="action-item"><span class="action-number">5</span> Thank God for saving you—be specific about what He saved you from</div>
+            </div>
+            
+            <div class="discussion-box">
+                <div class="discussion-title">Small Group Discussion Questions</div>
+                <div class="discussion-question">1. What aspects of salvation are still confusing to you?</div>
+                <div class="discussion-question">2. How would you explain salvation to a non-Christian friend without using "churchy" words?</div>
+                <div class="discussion-question">3. What difference has salvation made in your daily life?</div>
+                <div class="discussion-question">4. How do you handle doubts about your salvation?</div>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 2 -->
+        <div class="new-section">
+            <div class="chapter-header">
+                <div class="chapter-label">CHAPTER TWO</div>
+                <div class="chapter-title">Faith & Doubt</div>
+                <div class="chapter-subtitle">When Questions Won't Go Away</div>
+            </div>
+            
+            <p>If you've never doubted your faith, you probably haven't thought about it very deeply. That might sound harsh, but it's true. Doubt isn't the opposite of faith—it's often faith trying to grow deeper roots.</p>
+            
+            <h2>Is It Normal to Have Doubts?</h2>
+            
+            <p>Short answer: Yes. Absolutely. 100%.</p>
+            
+            <p>Long answer: Not only is it normal, but some of the Bible's greatest heroes wrestled with serious doubts:</p>
+            
+            <ul>
+                <li><strong>John the Baptist</strong> (who baptized Jesus!) later asked, "Are you the one?" (Matthew 11:3)</li>
+                <li><strong>Thomas</strong> wouldn't believe without proof (John 20:25)</li>
+                <li><strong>Peter</strong> walked on water then immediately doubted (Matthew 14:31)</li>
+                <li><strong>David</strong> repeatedly asked "How long, O Lord?" (Psalm 13)</li>
+                <li><strong>Job</strong> questioned God's justice for like 30 chapters</li>
+            </ul>
+            
+            <div class="real-talk">
+                <div class="real-talk-content">
+                    Church culture often treats doubt like it's sin. Someone questions something and immediately gets shut down with "You just need more faith!" But Jesus didn't shame Thomas for doubting—He showed him His scars. God can handle your questions. He's not threatened by your doubts.
+                </div>
+            </div>
+            
+            <h2>Types of Doubt You Might Face</h2>
+            
+            <h3>1. Intellectual Doubt</h3>
+            <p>"How can the Bible be true when science says...?"</p>
+            <p>"What about contradictions in Scripture?"</p>
+            <p>"How can a loving God allow suffering?"</p>
+            
+            <h3>2. Emotional Doubt</h3>
+            <p>"I don't feel God anymore"</p>
+            <p>"My prayers bounce off the ceiling"</p>
+            <p>"God feels distant and uncaring"</p>
+            
+            <h3>3. Moral Doubt</h3>
+            <p>"How can Christianity's claims be exclusive?"</p>
+            <p>"Why does the church hurt people?"</p>
+            <p>"God's standards seem unfair"</p>
+            
+            <h3>4. Circumstantial Doubt</h3>
+            <p>"If God loves me, why is my life falling apart?"</p>
+            <p>"Where was God when..."</p>
+            <p>"Good things happen to bad people"</p>
+            
+            <div class="scripture-study">
+                <div class="scripture-text">
+                    "Immediately Jesus reached out his hand and caught him. 'You of little faith,' he said, 'why did you doubt?' And when they climbed into the boat, the wind died down."
+                </div>
+                <div class="scripture-ref">- Matthew 14:31-32</div>
+            </div>
+            
+            <p>Notice: Jesus caught Peter WHILE he was doubting, not after he got his faith together.</p>
+            
+            <h2>Handling Spiritual Dry Seasons</h2>
+            
+            <p>Sometimes faith feels like a desert. You're doing all the "right" things—reading your Bible, praying, going to church—but God feels a million miles away. Welcome to what mystics call "the dark night of the soul."</p>
+            
+            <div class="trenches-story">
+                <div class="story-content">
+                    "I went through six months where I felt absolutely nothing when I prayed. I thought God had abandoned me or I'd done something wrong. Looking back, that desert season taught me to follow God for who He is, not for what I feel. My faith became less about emotion and more about choice. It was brutal, but it made my faith bulletproof." - Marcus, 24
+                </div>
+            </div>
+            
+            <h3>What to Do in the Desert:</h3>
+            
+            <div class="action-steps">
+                <div class="action-item"><span class="action-number">1</span> <strong>Keep showing up</strong> - Don't abandon spiritual disciplines even when they feel empty</div>
+                <div class="action-item"><span class="action-number">2</span> <strong>Remember past faithfulness</strong> - Write down times God came through before</div>
+                <div class="action-item"><span class="action-number">3</span> <strong>Change your approach</strong> - Try new ways of connecting with God</div>
+                <div class="action-item"><span class="action-number">4</span> <strong>Get honest</strong> - Tell God exactly how you feel (He already knows)</div>
+                <div class="action-item"><span class="action-number">5</span> <strong>Seek community</strong> - Don't go through dry seasons alone</div>
+            </div>
+            
+            <h2>When Prayers Seem Unanswered</h2>
+            
+            <p>You've prayed. You've fasted. You've believed. And... nothing. Now what?</p>
+            
+            <div class="qa-section">
+                <div class="question">Why doesn't God answer my prayers?</div>
+                <div class="answer">God always answers, but not always how we expect. Sometimes it's "yes," sometimes "no," sometimes "wait," and sometimes "I have something better." The hard truth? We don't always get to know why. Job never got an explanation for his suffering—he got God's presence instead.</div>
+                
+                <div class="question" style="margin-top: 20px;">Am I not praying right?</div>
+                <div class="answer">Prayer isn't a formula where if you say the right words, God has to respond. It's communication with your Father. He cares more about your heart than your words. The disciples asked Jesus to teach them to pray, and He gave them a simple template, not a magic spell (Matthew 6:9-13).</div>
+            </div>
+            
+            <div class="myth-buster">
+                "If you have enough faith, God will give you whatever you ask for."
+                <div class="truth">
+                    Jesus had perfect faith and prayed for the cup to pass from Him—God still said no (Luke 22:42). Paul had incredible faith and prayed three times for his "thorn" to be removed—God said His grace was sufficient (2 Corinthians 12:8-9). Faith isn't about getting what we want; it's about trusting God knows what we need.
+                </div>
+            </div>
+            
+            <h2>Wrestling with God Like Jacob</h2>
+            
+            <p>Jacob literally wrestled with God all night and walked away with a limp and a blessing (Genesis 32:22-32). Sometimes faith is a wrestling match, not a peaceful meditation.</p>
+            
+            <div class="scripture-study">
+                <div class="scripture-text">
+                    "I will not let you go unless you bless me."
+                </div>
+                <div class="scripture-ref">- Genesis 32:26</div>
+            </div>
+            
+            <p>It's okay to:</p>
+            <ul>
+                <li>Argue with God (respectfully)</li>
+                <li>Express anger and frustration</li>
+                <li>Demand answers (you might not get them)</li>
+                <li>Refuse to let go until something changes</li>
+                <li>Come away limping but blessed</li>
+            </ul>
+            
+            <h2>Intellectual Challenges to Faith</h2>
+            
+            <p>Your professor says the Bible is mythology. Your friends think you're delusional. YouTube is full of atheists dismantling Christianity. How do you keep faith when smart people say you're wrong?</p>
+            
+            <h3>Remember:</h3>
+            <ul>
+                <li>Many brilliant scientists, philosophers, and scholars are Christians</li>
+                <li>Faith and reason aren't enemies—they're dance partners</li>
+                <li>Not having all the answers doesn't mean there aren't answers</li>
+                <li>Intellectual pride can blind people to spiritual truth</li>
+                <li>The gospel seems foolish to those who don't believe (1 Corinthians 1:18)</li>
+            </ul>
+            
+            <div class="reflection-box">
+                <div class="reflection-prompt">What doubts are you carrying right now?</div>
+                <div class="reflection-lines"></div>
+                <div class="reflection-prompt">What triggered these doubts?</div>
+                <div class="reflection-lines"></div>
+                <div class="reflection-prompt">What would it take for these doubts to be resolved?</div>
+                <div class="reflection-lines"></div>
+                <div class="reflection-prompt">Can you live with uncertainty about some things?</div>
+                <div class="reflection-lines"></div>
+            </div>
+            
+            <div class="prayer-guide">
+                <div class="prayer-text">
+                    God, I believe; help my unbelief. I bring You my doubts, my questions, my confusion. I'm tired of pretending everything makes sense when it doesn't. Give me faith to trust You in the mystery, courage to keep seeking truth, and peace with what I cannot understand. Thank You for being big enough to handle my questions. Amen.
+                </div>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 4: Modern Culture Preview -->
+        <div class="new-section">
+            <div class="chapter-header">
+                <div class="chapter-label">CHAPTER FOUR</div>
+                <div class="chapter-title">Modern Culture</div>
+                <div class="chapter-subtitle">Being Christian in Today's World</div>
+            </div>
+            
+            <p>Your Instagram feed is full of friends living their "best life" without God. Your college professors think religion is for the weak-minded. Your coworkers look at you weird when you pray before lunch. Welcome to following Jesus in the 21st century.</p>
+            
+            <h2>Social Media Christianity vs. Real Faith</h2>
+            
+            <p>Let's address the elephant in the room: social media has created a weird version of Christianity that's more about aesthetics than authentic faith.</p>
+            
+            <div class="social-media-box">
+                <h3 style="color: white;">The Instagram Christian Starter Pack:</h3>
+                <ul style="color: white;">
+                    <li>Sunset photos with Bible verses in cursive fonts</li>
+                    <li>Coffee shop Bible study flat lays</li>
+                    <li>"Blessed" in every caption</li>
+                    <li>Worship hands emoji spam 🙌🙌🙌</li>
+                    <li>Humble brags disguised as testimonies</li>
+                </ul>
+            </div>
+            
+            <div class="real-talk">
+                <div class="real-talk-content">
+                    There's nothing wrong with sharing your faith online, but when your Christianity becomes a performance for likes, you've missed the point. Real faith is messy, uncomfortable, and often unphotogenic. It's crying in your car after church. It's serving when no one's watching. It's choosing forgiveness when you want revenge. That stuff doesn't get many double-taps, but it's what actually matters.
+                </div>
+            </div>
+            
+            <h2>Handling Peer Pressure and Opposition</h2>
+            
+            <p>Being a Christian in your teens and twenties means:</p>
+            <ul>
+                <li>Being the only one not hooking up</li>
+                <li>Saying no to parties that will compromise your values</li>
+                <li>Getting mocked for believing in "fairy tales"</li>
+                <li>Losing friends who think you've joined a cult</li>
+                <li>Feeling like an outsider in your own generation</li>
+            </ul>
+            
+            <div class="scripture-study">
+                <div class="scripture-text">
+                    "If the world hates you, keep in mind that it hated me first. If you belonged to the world, it would love you as its own. As it is, you do not belong to the world, but I have chosen you out of the world. That is why the world hates you."
+                </div>
+                <div class="scripture-ref">- John 15:18-19</div>
+            </div>
+            
+            <h3>Practical Strategies for Standing Firm:</h3>
+            
+            <div class="action-steps">
+                <div class="action-item"><span class="action-number">1</span> <strong>Find your tribe</strong> - You need Christian friends who get it</div>
+                <div class="action-item"><span class="action-number">2</span> <strong>Know your why</strong> - Be clear on why you believe what you believe</div>
+                <div class="action-item"><span class="action-number">3</span> <strong>Set boundaries early</strong> - It's easier to maintain standards than to establish them later</div>
+                <div class="action-item"><span class="action-number">4</span> <strong>Don't be weird</strong> - Be different, but don't be obnoxious about it</div>
+                <div class="action-item"><span class="action-number">5</span> <strong>Love genuinely</strong> - The best witness is authentic love</div>
+            </div>
+            
+            <h2>Dating, Relationships, and Biblical Boundaries</h2>
+            
+            <p>Everyone's hooking up. Dating apps are a minefield. "Talking" has replaced actual dating. How do you navigate relationships when biblical standards seem prehistoric?</p>
+            
+            <div class="myth-buster">
+                "The Bible's rules about sex are outdated and repressive."
+                <div class="truth">
+                    God created sex and called it good—He's not anti-sex, He's pro-sex in the right context. Biblical boundaries aren't about limiting your fun; they're about protecting your heart, your future, and your ability to bond deeply with your spouse. Every boundary God sets is for your flourishing, not your frustration.
+                </div>
+            </div>
+            
+            <h3>Real Boundaries for Real Relationships:</h3>
+            
+            <table>
+                <tr>
+                    <th>The World Says</th>
+                    <th>The Bible Says</th>
+                    <th>The Result</th>
+                </tr>
+                <tr>
+                    <td>"Test compatibility"</td>
+                    <td>Save sex for marriage</td>
+                    <td>Deeper intimacy, no comparison, no regret</td>
+                </tr>
+                <tr>
+                    <td>"Follow your heart"</td>
+                    <td>Guard your heart</td>
+                    <td>Wisdom in choosing partners</td>
+                </tr>
+                <tr>
+                    <td>"You complete me"</td>
+                    <td>Be complete in Christ first</td>
+                    <td>Healthy, non-codependent love</td>
+                </tr>
+                <tr>
+                    <td>"Love is just a feeling"</td>
+                    <td>Love is a choice and action</td>
+                    <td>Lasting relationships</td>
+                </tr>
+            </table>
+            
+            <div class="trenches-story">
+                <div class="story-content">
+                    "I dated non-Christians thinking I could change them. I lowered my standards thinking legalism was my problem. I ended up heartbroken and compromised. When I finally decided to actually follow biblical boundaries—only dating believers, saving sex for marriage, seeking God first—everyone thought I was crazy. But I found peace, purpose, and eventually a relationship built on something solid. The waiting was worth it." - Jessica, 26
+                </div>
+            </div>
+            
+            <h2>Politics and Faith</h2>
+            
+            <p>Your conservative friends think you're a liberal. Your liberal friends think you're conservative. Welcome to having a kingdom mindset in a polarized world.</p>
+            
+            <h3>Kingdom Politics 101:</h3>
+            <ul>
+                <li>Your ultimate allegiance is to God's kingdom, not a political party</li>
+                <li>You can care about justice AND morality</li>
+                <li>Jesus wasn't a Republican or Democrat—He was the King</li>
+                <li>Christians can disagree on politics and still be family</li>
+                <li>Your hope isn't in who's in office but Who's on the throne</li>
+            </ul>
+            
+            <div class="discussion-box">
+                <div class="discussion-title">Questions for Reflection</div>
+                <div class="discussion-question">1. How has social media affected your faith positively and negatively?</div>
+                <div class="discussion-question">2. What cultural pressures do you face that previous generations didn't?</div>
+                <div class="discussion-question">3. How do you maintain biblical values without becoming judgmental?</div>
+                <div class="discussion-question">4. What boundaries do you need to set in relationships?</div>
+            </div>
+        </div>
+        
+        <!-- CHAPTER 6: Tough Questions Preview -->
+        <div class="new-section">
+            <div class="chapter-header">
+                <div class="chapter-label">CHAPTER SIX</div>
+                <div class="chapter-title">Tough Questions</div>
+                <div class="chapter-subtitle">The Stuff We're Afraid to Ask</div>
+            </div>
+            
+            <p>These are the questions that keep you up at night. The ones you're afraid to ask because you think they'll make you sound like a bad Christian. Let's tackle them head-on.</p>
+            
+            <h2>Why Does God Allow Suffering?</h2>
+            
+            <p>This is the big one. If God is all-powerful and all-loving, why do children get cancer? Why do natural disasters kill innocent people? Why didn't He stop the Holocaust?</p>
+            
+            <div class="scripture-study">
+                <div class="scripture-text">
+                    "In this world you will have trouble. But take heart! I have overcome the world."
+                </div>
+                <div class="scripture-ref">- John 16:33</div>
+            </div>
+            
+            <p>Here's what we know:</p>
+            <ul>
+                <li><strong>Free will is real:</strong> God gave humans the ability to choose, even to choose evil</li>
+                <li><strong>The world is broken:</strong> Sin corrupted everything, including nature itself</li>
+                <li><strong>God suffers with us:</strong> Jesus wept, felt pain, and experienced death</li>
+                <li><strong>Purpose in pain:</strong> God can bring good from evil (Romans 8:28)</li>
+                <li><strong>Temporary trouble:</strong> Eternity puts our suffering in perspective</li>
+            </ul>
+            
+            <div class="real-talk">
+                <div class="real-talk-content">
+                    Let's be honest: these answers don't make the pain go away. When you're in the middle of suffering, theological explanations feel hollow. Sometimes the answer isn't an explanation but presence—God being with us in the pain, not explaining it away. Jesus didn't come to eliminate suffering; He came to enter into it with us and transform it.
+                </div>
+            </div>
+            
+            <h2>What About Other Religions?</h2>
+            
+            <p>Your Muslim friend is devout and kind. Your Buddhist coworker seems more peaceful than most Christians. Your atheist professor is moral and generous. Are they all going to hell?</p>
+            
+            <div class="qa-section">
+                <div class="question">How can Christianity claim to be the only way?</div>
+                <div class="answer">Jesus made the exclusive claim: "I am the way, the truth, and the life. No one comes to the Father except through me" (John 14:6). Either He was lying, crazy, or telling the truth. Christianity's exclusivity isn't arrogance—it's based on Jesus' own words. We didn't make this up to feel special.</div>
+                
+                <div class="question" style="margin-top: 20px;">What about people who never hear about Jesus?</div>
+                <div class="answer">God is just and will judge fairly. Romans 1:20 says creation itself reveals God. Abraham was saved by faith before knowing about Jesus. We trust God's justice while taking seriously our commission to share the gospel. What we know for certain: God is more merciful than we imagine and more just than we comprehend.</div>
+            </div>
+            
+            <h2>Old Testament Violence and God's Character</h2>
+            
+            <p>God commanded genocide. He killed firstborn children. He sent bears to maul kids who mocked a prophet. How do we reconcile this with "God is love"?</p>
+            
+            <h3>Context Matters:</h3>
+            <ul>
+                <li><strong>Ancient warfare:</strong> The commands were specific to specific times, not universal principles</li>
+                <li><strong>Judgment on evil:</strong> The nations destroyed were engaged in child sacrifice and extreme evil</li>
+                <li><strong>Progressive revelation:</strong> God revealed Himself gradually, culminating in Jesus</li>
+                <li><strong>Jesus is the clearest picture:</strong> "Anyone who has seen me has seen the Father" (John 14:9)</li>
+            </ul>
+            
+            <h2>Science and Faith</h2>
+            
+            <p>Evolution. The age of the earth. The Big Bang. How do we handle science that seems to contradict the Bible?</p>
+            
+            <div class="myth-buster">
+                "You have to choose between science and faith."
+                <div class="truth">
+                    Many brilliant scientists are Christians. Science explores HOW God's creation works; faith explores WHY it exists. They answer different questions. The Bible isn't a science textbook—it's a revelation of God and His relationship with humanity. Genesis tells us WHO created, not necessarily HOW He created.
+                </div>
+            </div>
+            
+            <h2>LGBTQ+ Issues and Christian Response</h2>
+            
+            <p>This is the cultural flashpoint of our generation. How do we hold to biblical truth while loving people genuinely?</p>
+            
+            <div class="scripture-study">
+                <div class="scripture-text">
+                    "Speak the truth in love"
+                </div>
+                <div class="scripture-ref">- Ephesians 4:15</div>
+            </div>
+            
+            <h3>Key Principles:</h3>
+            <ul>
+                <li>Every person is made in God's image and deserves dignity</li>
+                <li>God's design for sexuality is clear in Scripture</li>
+                <li>We all have broken sexuality in different ways</li>
+                <li>The church should be the safest place for struggling people</li>
+                <li>Love doesn't mean approval of all behaviors</li>
+                <li>Truth without love is brutality; love without truth is sentimentality</li>
+            </ul>
+            
+            <div class="reflection-box">
+                <div class="reflection-prompt">What tough question bothers you most?</div>
+                <div class="reflection-lines"></div>
+                <div class="reflection-prompt">How do you handle questions you can't answer?</div>
+                <div class="reflection-lines"></div>
+                <div class="reflection-prompt">What would help you feel more confident addressing difficult topics?</div>
+                <div class="reflection-lines"></div>
+            </div>
+        </div>
+        
+        <!-- CLOSING SECTION -->
+        <div class="new-section">
+            <h1>Your Next Steps</h1>
+            
+            <p>You've made it this far. That says something about you—you're serious about your faith, willing to wrestle with hard questions, and committed to growing. That's huge.</p>
+            
+            <h2>Where Do You Go From Here?</h2>
+            
+            <div class="action-steps">
+                <div class="action-item"><span class="action-number">1</span> <strong>Keep asking questions</strong> - A faith that can't be questioned isn't worth having</div>
+                <div class="action-item"><span class="action-number">2</span> <strong>Find community</strong> - You weren't meant to do this alone</div>
+                <div class="action-item"><span class="action-number">3</span> <strong>Stay in the Word</strong> - Let Scripture shape your thinking</div>
+                <div class="action-item"><span class="action-number">4</span> <strong>Practice what you learn</strong> - Faith without action is just philosophy</div>
+                <div class="action-item"><span class="action-number">5</span> <strong>Give yourself grace</strong> - You're going to mess up, and that's okay</div>
+            </div>
+            
+            <h2>Remember This</h2>
+            
+            <div class="real-talk">
+                <div class="real-talk-content">
+                    Your faith journey won't look like anyone else's. You'll have seasons of certainty and seasons of doubt. Times when God feels close and times when He feels distant. Days when following Jesus is easy and days when it costs everything. That's normal. That's real faith. Keep going.
+                </div>
+            </div>
+            
+            <h2>A Final Word</h2>
+            
+            <p>The world needs Christians who are:</p>
+            <ul>
+                <li>Intellectually honest about their doubts</li>
+                <li>Compassionate toward those who disagree</li>
+                <li>Courageous in their convictions</li>
+                <li>Humble about what they don't know</li>
+                <li>Genuine in their love</li>
+                <li>Uncompromising on truth</li>
+                <li>Generous with grace</li>
+            </ul>
+            
+            <p>In other words, the world needs Christians who look like Jesus.</p>
+            
+            <p>That's the goal. Not perfection. Not having all the answers. Not never struggling. Just becoming more like Jesus, one day at a time, one decision at a time, one question at a time.</p>
+            
+            <div class="prayer-guide">
+                <div class="prayer-text">
+                    God, thank You for meeting me where I am, doubts and all. Thank You for being patient with my questions and gentle with my struggles. Help me to keep growing, keep seeking, keep following—even when it's hard. Make me the kind of Christian this world desperately needs: genuine, loving, and unashamed of the gospel. Use my life to point others to You. In Jesus' name, Amen.
+                </div>
+            </div>
+            
+            <div class="divider">✦ ✦ ✦</div>
+            
+            <div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 20px; margin-top: 40px;">
+                <h2 style="color: white; margin-bottom: 20px;">You've Got This</h2>
+                <p style="font-size: 1.2em; line-height: 1.8;">
+                    Actually, let me rephrase that:<br>
+                    <strong style="font-size: 1.5em;">God's Got You</strong><br><br>
+                    And that makes all the difference.
+                </p>
+                <p style="margin-top: 30px; opacity: 0.9;">
+                    Keep navigating. Keep growing. Keep the faith.<br>
+                    The journey is worth it.
+                </p>
+                <p style="margin-top: 30px; font-size: 1.1em;">
+                    <em>- Cleon Alleyne</em>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
